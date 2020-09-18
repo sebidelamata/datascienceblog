@@ -24,3 +24,22 @@ requests 2.24.0<br>
 bs4 0.0.1<br>
 scikit-learn 0.23.2<br>
 <hr />
+<p><h2>Data:</h2></p>
+<p><h3>Stock Market:</h3><br>
+<b>SPY:</b> SPDR S&P 500 ETF Trust. 500 largest market cap weighted US common stocks based on S&P500 index.</p>
+<p><h3>Precious Metals:</h3><br>
+<b>SLV:</b> iShares Silver Trust. A trust holding silver bullion that is generally valued by daily spot price of silver, less fund expenses.<br>
+<b>GLD:</b> SPDR Gold Shares. A trust holding gold bullion that is generally valued by the daily spot price of gold, less fund expenses.<br>
+<b>PPLT:</b> Aberdeen Standard Physical Platinum Shares ETF. A trust holding physical platinum that is generally valued by daily spot price of platinum, less fund expenses.</p>
+<p><h3>Dollar Valuation Assets:</h3><br>
+<b>DX-Y.NYB:</b> US Dollar/USDX - Index - Cash. Weighted index of currencies used to measure the value of the dollar as compared to currencies of major US trading partners listed in the FOREX market. Market basket of currencies consists of the Euro, Swiss Franc, Japanese Yen, Canadian dollar, British pound, and Swedish Krona, with largest weighting towards the Euro and the least weighting given to the Swiss Franc.<br>
+<b>TLT:</b> iShares 20+ Year Treasury Bond ETF. An ETF that tracks the performance of US government bonds with 20 or more years until maturity. Lower Fed interest rates tend to drive up the price of the bonds.<br>
+<b>^TNX:</b> Treasury Yield 10 Years. An index that tracks the value of 10 year Treasury Notes.<br>
+<b>CPI:</b> Seasonally adjusted Consumer Price Index based on a market basket of consumer goods.</p>
+<hr />
+<p><h2>Data sourcing and cleaning:</h2></p>
+<p>Data for SLV, GLD, PPLT,DX-Y.NYB, TLT, ^TNX, and SPY were web scraped using the yahoo finance package. Close prices were used for each trading day. Data was merged using date as an index.</p>
+<p>Seasonally adjusted CPI data was gathered from the St. Louis FED using the fredapi package. Data was only available for monthly intervals, so the data was resampled to daily frequency and interpolated to fill in NA values. This was then merged onto the dataframe using date as an index.</p>
+<p>In order to make a market basket for precious metals, market cap data was scraped from the yahoo finance website using the beautiful soup and requests packages. This data was converted to a float after number denominators (‘M’, and ‘B’) were removed and multiplied by the appropriate value.</p>
+<hr />
+<p><h2>Exploratory Analysis:</h2></p>
