@@ -118,7 +118,7 @@
 	}
 
 	strong, b {
-		font-weight: 400;
+		font-weight: 500;
 		color: #4d4d4d;
 	}
 
@@ -128,7 +128,7 @@
 
 	a {
 		text-decoration: none;
-		color: inherit;
+		color: #042f66;
 		border-bottom: dotted 1px rgba(128, 128, 128, 0.5);
 		@include vendor('transition', ('color 0.35s ease-in-out', 'border-bottom-color 0.35s ease-in-out'));
 		outline: 0;
