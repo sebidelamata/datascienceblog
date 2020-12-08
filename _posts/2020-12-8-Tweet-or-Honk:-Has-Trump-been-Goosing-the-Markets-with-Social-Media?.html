@@ -5,4 +5,6 @@ layout: post
 <img src="{{ 'assets/images/trumpVolatilityMostPopularNouns.jpeg' | relative_url }}" style="max-width:100%;"><br>
 <!-- Text stuff -->
 <p><h2>Abstract:</h2></p>
-<p>
+<p>In this post we use Trump’s Twitter data to predict whether market volatility (the VIX) will increase that day. To accomplish this we use a Natural Language Processing (NLP) bag-of-words approach with dimensionality reduction through truncated Singular Value Decomposition (SVD) for latent sentiment analysis. The predictions are decided by a weighted voting classifier ensemble consisting of hyperparameter tuned logistic regression, decision tree, random forest, Adaptive Boosting (AdaBoost) of decision trees, and stochastic gradient boosted decision tree models. To handle the large amounts of data we use Dask and sklearn’s joblib for parallel processing as well as sparse matrix data structures. </p>
+<p><h2>Background:</h2></p>
+
