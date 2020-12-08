@@ -10,3 +10,36 @@ layout: post
 <p>To say that President Trump has garnered public attention with his Twitter posts is a gross understatement; one need only look at the <a href="https://www.washingtonpost.com/news/get-there/wp/2017/06/01/would-you-buy-a-21-99-covfefe-t-shirt/" target="_blank" rel="noopener noreferrer">small fortunes being made selling ‘covfefe’ merch on the internet</a> as an indicator of the rapt attention he holds both over his supporters and detractors alike. He is at the same time Jack Dorsey’s greatest enemy and his greatest asset by <a href="https://www.reuters.com/article/us-usa-twitter-trump/trump-complained-to-twitter-ceo-about-lost-followers-source-idUSKCN1RZ2D1" target="_blank" rel="noopener noreferrer">drawing the president’s personal ire for his actions</a> and creating a mountain of ad-space revenue in one push of a blue button. Though Obama had a Twitter account as during his administration, it served as a more traditional and benign presence. Even before declaring his intentions to run for office in June of 2015 Trump communicated with Twitter in a way that was direct, unpolished, seemingly always irate, and at times obscene. Now it has become almost expected as a new standard: Can any future president really be seen as engaged with their constituency if their every unfiltered thought is not constantly being uploaded to the clout-cloud?</p>
 <p>In this light it has become a common inside joke among investors that they live in constant fear of what his next Tweet will bring to the market. This is not to say other presidents and governmental actions have not affected the market. In an age where securities can be bought and sold in microseconds and a <a href="https://www.bbc.com/news/world-us-canada-54880774" target="_blank" rel="noopener noreferrer">tweet can be shared with the general public before even the president’s own staff find out</a>, there can seem to be some evidence for this claim.</p>
 <p>Investors can however be a notoriously superstitious bunch; regardless of how many Fibonacci retracements and moving averages you want to throw in a chart, technical “analysis” has very little to do with quantitative mathematics and <a href="https://www.youtube.com/watch?v=5zvvJ8hAJN0" target="_blank" rel="noopener noreferrer">more to do with engagement</a> (besides, backtesting reveals it is <a href="https://www.youtube.com/watch?v=PMrGwKlXMTk" target="_blank" rel="noopener noreferrer">about as effective as flipping a coin</a>). So how do we know if there is any merit to this claim?</p>
+<p>To address the question of whether Trump has any power to affect markets with his use of social media we first need to look at our problem through a greater scope. In a perfectly efficient market both everyone and no one participating in the market has this power of influence to some roughly equal extent. Everyone has this power by their own valuations determining where they lie on the bid ask spread. At the same time no one has this power as it surpasses no one else’s ability to do the same, and if you have actual intentions of buying a product your bid needs to be at least reasonable. In reality, markets aren’t quite so efficient, and some people hold more sway over others. It only makes sense that a person that holds power over financial and fiscal policies would hold at least a little more of this power than others.</p>
+<p>We must also consider where this information actually comes from. While Trump may be the author of the tweet, is he the originator of the idea that can cause changes in the market, or is he merely a conduit for that idea? He is, after all, an elective representative. Isn’t it logical that, to at least some extent, his tweets represent the opinions of a large segment of the market participants?</p>
+<p>One might logically conclude that the market is more worried about the action that may follow a particular tweet than the tweet itself, but while policies are rigid and binding with an ability to set real limits on profits, tweets are quite the opposite. They are temporary documents of opinions that may change within minutes, and in general operate on a more “sell the rumor, buy the news” principle. If Trump’s tweets really have a consistent relationship with the markets we should expect to see spikes of volatility correlated to our tweet’s metrics. As implied volatility tends to overstate historical volatility, we should expect to see the most reaction to our tweet from volatility change rather than price movement of underlying assets. In addition, the VIX gives us an ability to get a two-sided perspective on volatility. Although it is usually associated with falling prices, a large spike in price can also drive volatility.</p>
+<p>In this project we will use our data science tools to see to what extent, if any, Trump’s use of Twitter has on market volatility.</p>
+<p><h2>Computing Environment:</h2></p>
+Python 3.7.0<br>
+numpy 1.19.2<br>
+pandas 1.1.2<br>
+dask 2.30.0<br>
+dask-ml 1.7.0<br>
+yfinance 0.1.55<br>
+multiprocess 0.70.10<br>
+joblib 0.17.0<br>
+DateTime 4.3<br>
+matplotlib 3.3.2<br>
+seaborn 0.11.0<br>
+wordcloud 1.8.0<br>
+Pillow 7.2.0<br>
+scipy 1.5.3<br>
+contractions 0.0.25<br>
+nltk 3.5<br>
+scikit-learn 0.23.2<br>
+<hr />
+<p><h2>Data:</h2></p>
+<p><h3>Twitter Data:</h3> The following columns are derived from Donald Trump’s Twitter data relating to the verified account <a href="https://twitter.com/realDonaldTrump" target="_blank" rel="noopener noreferrer">@realDonaldTrump</a>.<br>
+<b>‘truncated’:</b> This column indicates whether the tweet is truncated. A truncated tweet is a tweet that exceeds the maximum allowed characters for a tweet and is divided among two or more tweets with the use of an ellipsis at the end and beginning of the continuing tweets to indicate this to the user. A 1 indicates the tweet being part of a truncated body while a 0 indicates the entire message is in a single tweet.<br>
+<b>‘text’:</b> This column is a string containing all the words in the tweet, including emojis.<br>
+<b>‘Is_quote_status’:</b> This column indicates whether this tweet is a quote of another user’s tweet.<br>
+<b>‘favorite_count’:</b> This column counts how many other users have favorited this tweet.<br>
+<b>‘retweeted’:</b>  This column indicates whether this tweet has been retweeted by other users. A 1 indicates that the tweet has been retweeted by other users. A 0 indicates the tweet has not been retweeted by other users.<br>
+<b>‘retweet_count’:</b> This column counts how many other users have retweeted this tweet.</p>
+<p><h3>Market Data:</h3><br>
+<b>^VIX:</b> The CBOE Volatility Index used to measure forward-looking (implied) volatility. Calculated from the call to put ratio on 23 to 37 day options contracts on SPX.</p>
